@@ -10,8 +10,9 @@ import {
   TodoDiv
 } from "./TodoEntryStyles";
 import { connect, MapDispatchToProps } from "react-redux";
+import { Link, RouteComponentProps, withRouter } from "react-router-dom";
 
-interface OwnProps { }
+interface OwnProps extends RouteComponentProps {}
 interface StateProps {}
 interface DispatchProps {
   addTodo: (todo: Todo) => void;
@@ -23,6 +24,7 @@ class TodoEntry extends React.Component<Props> {
   state: Todo = {
     name: "",
     description: "",
+    isActive: true,
     isCompleted: false
   };
 
@@ -36,28 +38,32 @@ class TodoEntry extends React.Component<Props> {
       : this.setState({ description: value });
   };
 
-  clearState = () => {
+  clearState = (callback: () => void) => {
     this.setState(
       {
         name: "",
         description: "",
-        isCompleted: false,
-      }
-      // callback
+        isActive: true,
+        isCompleted: false
+      },
+      callback
     );
   };
 
   addTodo = () => {
-    const { addTodo } = this.props;
+    const { addTodo, history } = this.props;
 
     addTodo(this.state);
 
-    this.clearState();
+    this.clearState(() => {
+      history.push("/");
+    });
   };
 
   render() {
     return (
       <TodoDiv>
+        <Link to="/"> Back </Link>
         <TodoHeader>Todo entry</TodoHeader>
         <TodoLabel>Task name</TodoLabel>
         <TodoInput
@@ -85,7 +91,9 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = {
   addTodo
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(TodoEntry);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(TodoEntry)
+);
