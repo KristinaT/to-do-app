@@ -5,7 +5,6 @@ export const TodoDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 50vw;
-
 `;
 
 export const TodoHeader = styled.header`
