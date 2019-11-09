@@ -1,7 +1,7 @@
 export interface Todo {
   id?: string;
-  name?: string;
-  isInProgress?: boolean;
+  name: string;
+  description?: string;
   isCompleted: boolean;
 }
 
