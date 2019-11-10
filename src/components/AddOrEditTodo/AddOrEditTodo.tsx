@@ -91,9 +91,7 @@ class AddOrEditTodo extends React.Component<Props, NewTodo> {
     return (
       <WrapperDiv>
         <RowDiv>
-          <Link to="/">
-            <TodoBack>Back</TodoBack>
-          </Link>
+          <TodoBack to="/">Back</TodoBack>
           <TodoHeader>Todo entry</TodoHeader>
           <TodoForm
             nameInputProps={{

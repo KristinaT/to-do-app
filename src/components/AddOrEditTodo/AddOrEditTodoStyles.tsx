@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const WrapperDiv = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ export const WrapperDiv = styled.div`
 
   margin: 4rem auto;
   padding: 2rem 3rem 3rem;
-  max-width: 500px;
+  max-width: 40rem;
   background: #ff6666;
   color: #fff;
   box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, 0.1);
@@ -33,7 +34,7 @@ export const TodoDiv = styled.div`
 
 export const TodoHeader = styled.header`
   text-align: center;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 2.6rem;
   letter-spacing: 0.05em;
 `;
@@ -54,6 +55,7 @@ export const TodoInput = styled.input`
   font-size: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
+  color: #fff;
   width: 100%;
 `;
 
@@ -69,9 +71,10 @@ export const TodoTextarea = styled.textarea`
   background: #f7f1f1;
 `;
 
-export const TodoBack = styled.a`
+export const TodoBack = styled(Link)`
   color: #f7f1f1;
   font-size: 0.8rem;
+  text-decoration: none;
 `;
 
 export const TodoButton = styled.input`

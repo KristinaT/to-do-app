@@ -8,6 +8,7 @@ import {
   TodoItemWrapper,
   TodoLink
 } from "./TodoItemStyles";
+import MaterialIcon from "material-icons-react";
 
 interface OwnProps {
   todo: Todo;
@@ -38,13 +39,21 @@ const TodoItem: React.FC<Props> = ({ todo, completeTodo, deleteTodo }) => {
         <TodoLink to={route}>{todo.name}</TodoLink>
       </div>
       <div>
-        <TodoActionButton onClick={handleComplete}>Done</TodoActionButton>
+        <TodoActionButton onClick={handleComplete}>
+          {todo.isCompleted ? (
+            <MaterialIcon icon="check_box" color={"#fff"} />
+          ) : (
+            <MaterialIcon icon="check_box_outline_blank" color={"#fff"} />
+          )}
+        </TodoActionButton>
         <Link to={`/edit/${todo.id}`}>
           <TodoActionButton>
-            Edit
+            <MaterialIcon icon="edit" color={"#fff"} />
           </TodoActionButton>
         </Link>
-        <TodoActionButton onClick={handleDelete}>Delete</TodoActionButton>
+        <TodoActionButton onClick={handleDelete}>
+          <MaterialIcon icon="delete" color={"#fff"} />
+        </TodoActionButton>
       </div>
     </TodoItemWrapper>
   );

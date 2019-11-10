@@ -12,7 +12,7 @@ import { Todo } from "../../types";
 import { MapStateToProps, connect } from "react-redux";
 import { StoreState } from "../../redux/store";
 import { getTodos } from "../../redux/selectors/todosSelectors";
-import { TodoSelect, FilterDiv } from "./TodoPreviewStyles";
+import { TodoSelect, FilterDiv, FilterWrapper, FilterHeader, PreviewHeader } from "./TodoPreviewStyles";
 import TodoItem from "../TodoItem/TodoItem";
 
 interface OwnProps {}
@@ -45,14 +45,14 @@ const TodosPreview: React.FC<Props> = ({ todos }) => {
   return (
     <WrapperDiv>
       <RowDiv>
-        <Link to="/entry">
-          <TodoBack>Add a to-do</TodoBack>
-        </Link>
+        <TodoBack to="/entry">
+          Add a todo
+        </TodoBack>
 
-        <TodoHeader>Todo List</TodoHeader>
-        <ElementWrapper>
+        <PreviewHeader>Todo List</PreviewHeader>
+        <FilterWrapper>
           <FilterDiv>
-            <h4>Filter by:</h4>
+            <FilterHeader>Filter by:</FilterHeader>
           </FilterDiv>
           <TodoSelect
             onChange={handleSelectChange}
@@ -63,7 +63,7 @@ const TodosPreview: React.FC<Props> = ({ todos }) => {
             <option value={FilterTypes.COMPLETED}>Completed</option>
             <option value={FilterTypes.ALL}>All</option>
           </TodoSelect>
-        </ElementWrapper>
+        </FilterWrapper>
 
         <ElementWrapper>
           {filteredTodos.map((todo: Todo) => {

@@ -1,13 +1,17 @@
 import React from "react";
 import { Todo } from "../../types";
-import {
-  Link,
-  RouteComponentProps,
-  Redirect
-} from "react-router-dom";
+import { RouteComponentProps, Redirect } from "react-router-dom";
 import { MapStateToProps, connect } from "react-redux";
 import { StoreState } from "../../redux/store";
 import { getTodo } from "../../redux/selectors/todosSelectors";
+import { DetailsWrapper } from "./TodoDetailsStyles";
+import {
+  WrapperDiv,
+  RowDiv,
+  TodoBack,
+  ElementWrapper
+} from "../AddOrEditTodo/AddOrEditTodoStyles";
+import { PreviewHeader } from "../TodosPreview/TodoPreviewStyles";
 
 interface OwnProps extends RouteComponentProps<{ id: string }> {}
 interface StateProps {
@@ -19,21 +23,23 @@ type Props = OwnProps & StateProps & DispatchProps;
 
 const TodoDetails: React.FC<Props> = ({ todo }) => {
   if (!todo) {
-    return <Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   const { name, description } = todo;
 
   return (
-    <div>
-      <Link to="/">Back</Link>
-
-      <h2>Details</h2>
-      <label>Name</label>
-      <p>{name}</p>
-      <label>Description</label>
-      <p>{description}</p>
-    </div>
+    <WrapperDiv>
+      <RowDiv>
+        <TodoBack to="/">Back</TodoBack>
+        <ElementWrapper>
+          <PreviewHeader>{name}</PreviewHeader>
+        </ElementWrapper>
+        <DetailsWrapper>
+          <p>{description}</p>
+        </DetailsWrapper>
+      </RowDiv>
+    </WrapperDiv>
   );
 };
 
