@@ -1,22 +1,42 @@
 import { Todo, NewTodo } from "../../types";
 import { ActionWithPayload } from "../types";
+import { Action } from "redux";
 
 export enum TodoActions {
   ADD_TODO = "ADD_TODO",
   EDIT_TODO = "EDIT_TODO",
   DELETE_TODO = "DELETE_TODO",
   COMPLETE_TODO = "COMPLETE_TODO",
-  CHANGE_FILTER_BY_VALUE = "CHANGE_FILTER_BY_VALUE"
+  COMPLETE_ALL_TODOS = "COMPLETE_ALL_TODOS"
 }
 
-export type AddTodoAction = ActionWithPayload<typeof TodoActions.ADD_TODO, NewTodo>;
+export type AddTodoAction = ActionWithPayload<
+  typeof TodoActions.ADD_TODO,
+  NewTodo
+>;
 
-export type EditTodoAction = ActionWithPayload<typeof TodoActions.EDIT_TODO, Todo>;
+export type EditTodoAction = ActionWithPayload<
+  typeof TodoActions.EDIT_TODO,
+  Todo
+>;
 
-export type DeleteTodoAction = ActionWithPayload<typeof TodoActions.DELETE_TODO, string>;
+export type DeleteTodoAction = ActionWithPayload<
+  typeof TodoActions.DELETE_TODO,
+  string
+>;
 
-export type CompleteTodoAction = ActionWithPayload<typeof TodoActions.COMPLETE_TODO, string>;
+export type CompleteTodoAction = ActionWithPayload<
+  typeof TodoActions.COMPLETE_TODO,
+  string
+>;
 
-export type ChangeFilterByValueAction = ActionWithPayload<typeof TodoActions.CHANGE_FILTER_BY_VALUE, string>;
+export type CompleteAllTodosAction = Action<
+  typeof TodoActions.COMPLETE_ALL_TODOS
+>;
 
-export type TodoActionTypes = AddTodoAction | EditTodoAction | DeleteTodoAction | CompleteTodoAction | ChangeFilterByValueAction;
+export type TodoActionTypes =
+  | AddTodoAction
+  | EditTodoAction
+  | DeleteTodoAction
+  | CompleteTodoAction
+  | CompleteAllTodosAction;

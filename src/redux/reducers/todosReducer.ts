@@ -6,7 +6,8 @@ import {
   DeleteTodoAction,
   EditTodoAction,
   AddTodoAction,
-  CompleteTodoAction
+  CompleteTodoAction,
+  CompleteAllTodosAction
 } from "../actions/constants";
 import findIndex from "lodash/findIndex";
 import uuid from "uuid";
@@ -102,6 +103,16 @@ const completeTodo: Reducer<TodosState, CompleteTodoAction> = (
   };
 };
 
+const completeAllTodos: Reducer<TodosState, CompleteAllTodosAction> = (
+  state = initialState
+) => ({
+  ...state,
+  todos: state.todos.map(todo => ({
+    ...todo,
+    isCompleted: true
+  }))
+});
+
 const todos: Reducer<TodosState, TodoActionTypes> = (
   state = initialState,
   action
@@ -115,6 +126,8 @@ const todos: Reducer<TodosState, TodoActionTypes> = (
       return editTodo(state, action);
     case TodoActions.COMPLETE_TODO:
       return completeTodo(state, action);
+    case TodoActions.COMPLETE_ALL_TODOS:
+      return completeAllTodos(state, action);
     default:
       return state;
   }
