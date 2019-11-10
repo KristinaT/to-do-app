@@ -12,7 +12,7 @@ import {
 import findIndex from "lodash/findIndex";
 import uuid from "uuid";
 
-const initialState: TodosState = {
+export const initialState: TodosState = {
   todos: []
 };
 const addTodo: Reducer<TodosState, AddTodoAction> = (

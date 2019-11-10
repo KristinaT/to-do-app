@@ -15,10 +15,15 @@ declare global {
   }
 }
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const configureStore = (initialState?: StoreState) => {
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = createStore(rootReducer, composeEnhancers());
+  const store = createStore(rootReducer, initialState, composeEnhancers());
 
-export const persistor = persistStore(store);
+  const persistor = persistStore(store);
 
-export default { store, persistor };
+  return { store, persistor };
+};
+
+export default configureStore;

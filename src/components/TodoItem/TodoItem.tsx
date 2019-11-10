@@ -39,15 +39,15 @@ const TodoItem: React.FC<Props> = ({ todo, completeTodo, deleteTodo, theme }) =>
         </TodoLink>
       </div>
       <div>
-        <TodoActionButton onClick={handleComplete}>
+        <TodoActionButton data-testid="complete-btn" onClick={handleComplete}>
           <MaterialIcon icon="done" color={theme.text} />
         </TodoActionButton>
-        <Link to={`/edit/${todo.id}`}>
+        <Link data-testid="edit-btn" to={`/edit/${todo.id}`}>
           <TodoActionButton>
             <MaterialIcon icon="edit" color={theme.text} />
           </TodoActionButton>
         </Link>
-        <TodoActionButton onClick={handleDelete}>
+        <TodoActionButton data-testid="delete-btn" onClick={handleDelete}>
           <MaterialIcon icon="delete" color={theme.text} />
         </TodoActionButton>
       </div>
