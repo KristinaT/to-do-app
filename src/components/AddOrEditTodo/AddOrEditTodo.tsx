@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { Todo, NewTodo } from "../../types";
 import { addTodo, editTodo } from "../../redux/actions/todoActions";
-import { TodoHeader, TodoDiv } from "./AddOrEditTodoStyles";
+import { TodoHeader, TodoDiv, WrapperDiv, RowDiv, TodoBack } from "./AddOrEditTodoStyles";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
 import TodoForm from "../TodoForm/TodoForm";
@@ -89,22 +89,26 @@ class AddOrEditTodo extends React.Component<Props, NewTodo> {
   render() {
     const { editMode } = this.props;
     return (
-      <TodoDiv>
-        <Link to="/"> Back </Link>
-        <TodoHeader>Todo entry</TodoHeader>
-        <TodoForm
-          nameInputProps={{
-            value: this.state.name,
-            onChange: this.handleField
-          }}
-          descriptionInputProps={{
-            value: this.state.description,
-            onChange: this.handleField
-          }}
-          onSubmit={editMode ? this.editTodo : this.addTodo}
-          buttonLabel={editMode ? "Save" : "Add"}
-        />
-      </TodoDiv>
+      <WrapperDiv>
+        <RowDiv>
+          <Link to="/">
+            <TodoBack>Back</TodoBack>
+          </Link>
+          <TodoHeader>Todo entry</TodoHeader>
+          <TodoForm
+            nameInputProps={{
+              value: this.state.name,
+              onChange: this.handleField
+            }}
+            descriptionInputProps={{
+              value: this.state.description,
+              onChange: this.handleField
+            }}
+            onSubmit={editMode ? this.editTodo : this.addTodo}
+            buttonLabel={editMode ? "Save" : "Add"}
+          />
+        </RowDiv>
+      </WrapperDiv>
     );
   }
 }

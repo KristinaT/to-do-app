@@ -1,5 +1,29 @@
 import styled from "styled-components";
 
+export const WrapperDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 4rem auto;
+  padding: 2rem 3rem 3rem;
+  max-width: 500px;
+  background: #ff6666;
+  color: #fff;
+  box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, 0.1);
+`;
+
+export const RowDiv = styled.div`
+  flex-direction: row;
+  background: #ff6666;
+  width: 30rem;
+`;
+
+export const ElementWrapper = styled.div`
+  width: 90%;
+  margin: 1rem;
+`;
+
 export const TodoDiv = styled.div`
   margin: 1rem;
   display: flex;
@@ -8,19 +32,16 @@ export const TodoDiv = styled.div`
 `;
 
 export const TodoHeader = styled.header`
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
   text-align: center;
+  font-weight: normal;
+  font-size: 2.6rem;
+  letter-spacing: 0.05em;
 `;
 
 export const TodoLabel = styled.label`
   margin: 0.5rem;
   font-size: 1rem;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-weight: 400;
   letter-spacing: 4px;
   text-align: center;
 `;
@@ -30,13 +51,10 @@ export const TodoInput = styled.input`
   border: none;
   outline: none;
   background: none;
-  display: block;
-  width: 100%;
-  margin-top: 0.5rem;
-  padding-bottom: 0.5rem;
   font-size: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
+  width: 100%;
 `;
 
 export const TodoTextarea = styled.textarea`
@@ -44,13 +62,16 @@ export const TodoTextarea = styled.textarea`
   height: 10rem;
   outline: none;
   background: none;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   width: 100%;
-  margin-top: 0.5rem;
-  padding: 2rem;
   font-size: 1rem;
   text-align: center;
+  background: #f7f1f1;
+`;
+
+export const TodoBack = styled.a`
+  color: #f7f1f1;
+  font-size: 0.8rem;
 `;
 
 export const TodoButton = styled.input`

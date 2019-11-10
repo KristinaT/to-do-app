@@ -1,9 +1,13 @@
 import React from "react";
 import { Todo } from "../../types";
 import { deleteTodo, completeTodo } from "../../redux/actions/todoActions";
-import { TodoLabel } from "../AddOrEditTodo/AddOrEditTodoStyles";
 import { MapDispatchToProps, connect } from "react-redux";
 import { Link } from "react-router-dom";
+import {
+  TodoActionButton,
+  TodoItemWrapper,
+  TodoLink
+} from "./TodoItemStyles";
 
 interface OwnProps {
   todo: Todo;
@@ -29,17 +33,20 @@ const TodoItem: React.FC<Props> = ({ todo, completeTodo, deleteTodo }) => {
     }
   };
   return (
-    <div>
-      <Link to={route}>
-        <TodoLabel key={todo.id}>{todo.name}</TodoLabel>
-      </Link>
-
-      <button onClick={handleComplete}>Done</button>
-      <Link to={`/edit/${todo.id}`}>
-        <button>Edit</button>
-      </Link>
-      <button onClick={handleDelete}>Delete</button>
-    </div>
+    <TodoItemWrapper>
+      <div>
+        <TodoLink to={route}>{todo.name}</TodoLink>
+      </div>
+      <div>
+        <TodoActionButton onClick={handleComplete}>Done</TodoActionButton>
+        <Link to={`/edit/${todo.id}`}>
+          <TodoActionButton>
+            Edit
+          </TodoActionButton>
+        </Link>
+        <TodoActionButton onClick={handleDelete}>Delete</TodoActionButton>
+      </div>
+    </TodoItemWrapper>
   );
 };
 

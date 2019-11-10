@@ -3,8 +3,10 @@ import {
   TodoLabel,
   TodoInput,
   TodoTextarea,
-  TodoButton
+  TodoButton,
+  ElementWrapper
 } from "../AddOrEditTodo/AddOrEditTodoStyles";
+import { TodoSubmitButton } from "./TodoFormStyles";
 
 export interface InputProps {
   value?: string;
@@ -28,15 +30,29 @@ const TodoForm: React.FC<Props> = ({
 }) => {
   return (
     <React.Fragment>
-      <TodoLabel>Task name</TodoLabel>
-      <TodoInput id="name" {...nameInputProps} type="text" name="name" />
-      <TodoLabel>Task description</TodoLabel>
-      <TodoTextarea
-        id="description"
-        {...descriptionInputProps}
-        name="description"
-      />
-      <TodoButton onClick={onSubmit} type="button" value={buttonLabel} />
+      <ElementWrapper>
+        <TodoLabel>Task name</TodoLabel>
+      </ElementWrapper>
+      <ElementWrapper>
+        <TodoInput id="name" {...nameInputProps} type="text" name="name" />
+      </ElementWrapper>
+      <ElementWrapper>
+        <TodoLabel>Task description</TodoLabel>
+      </ElementWrapper>
+      <ElementWrapper>
+        <TodoTextarea
+          id="description"
+          {...descriptionInputProps}
+          name="description"
+        />
+      </ElementWrapper>
+      <ElementWrapper>
+        <TodoSubmitButton
+          onClick={onSubmit}
+          type="button">
+          {buttonLabel}
+          </TodoSubmitButton>
+      </ElementWrapper>
     </React.Fragment>
   );
 };

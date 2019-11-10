@@ -1,6 +1,13 @@
 import React, { useState, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
-import { TodoDiv, TodoHeader } from "../AddOrEditTodo/AddOrEditTodoStyles";
+import {
+  TodoDiv,
+  TodoHeader,
+  WrapperDiv,
+  RowDiv,
+  TodoBack,
+  ElementWrapper
+} from "../AddOrEditTodo/AddOrEditTodoStyles";
 import { Todo } from "../../types";
 import { MapStateToProps, connect } from "react-redux";
 import { StoreState } from "../../redux/store";
@@ -36,28 +43,35 @@ const TodosPreview: React.FC<Props> = ({ todos }) => {
   }
 
   return (
-    <div>
-      <Link to="/entry">Add a to-do</Link>
-      <TodoDiv>
-        <TodoHeader>Todos</TodoHeader>
-        <FilterDiv>
-          <h4>Filter by:</h4>
-        </FilterDiv>
-        <TodoSelect
-          onChange={handleSelectChange}
-          value={filterType}
-          defaultValue={filterType}
-        >
-          <option value={FilterTypes.ACTIVE}>Active</option>
-          <option value={FilterTypes.COMPLETED}>Completed</option>
-          <option value={FilterTypes.ALL}>All</option>
-        </TodoSelect>
+    <WrapperDiv>
+      <RowDiv>
+        <Link to="/entry">
+          <TodoBack>Add a to-do</TodoBack>
+        </Link>
 
-        {filteredTodos.map((todo: Todo) => {
-          return <TodoItem todo={todo} />;
-        })}
-      </TodoDiv>
-    </div>
+        <TodoHeader>Todo List</TodoHeader>
+        <ElementWrapper>
+          <FilterDiv>
+            <h4>Filter by:</h4>
+          </FilterDiv>
+          <TodoSelect
+            onChange={handleSelectChange}
+            value={filterType}
+            defaultValue={filterType}
+          >
+            <option value={FilterTypes.ACTIVE}>Active</option>
+            <option value={FilterTypes.COMPLETED}>Completed</option>
+            <option value={FilterTypes.ALL}>All</option>
+          </TodoSelect>
+        </ElementWrapper>
+
+        <ElementWrapper>
+          {filteredTodos.map((todo: Todo) => {
+            return <TodoItem todo={todo} />;
+          })}
+        </ElementWrapper>
+      </RowDiv>
+    </WrapperDiv>
   );
 };
 
