@@ -3,12 +3,13 @@ import AddOrEditTodo from "./components/AddOrEditTodo/AddOrEditTodo";
 import TodosPreview from "./components/TodosPreview/TodosPreview";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TodoDetails from "./components/TodoDetails/TodoDetails";
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle } from "./theme/GlobalStyle";
 import { ThemeProvider } from "styled-components";
+import theme from "./theme/theme";
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={{}}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
         <Switch>
