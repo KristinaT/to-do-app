@@ -26,16 +26,16 @@ export const TodoItemWrapper = styled.div`
   background: rgba(255, 255, 255, 0.1);
 `;
 
-export const TodoLink = styled(Link)`
+export const TodoLink = styled(Link)<{ isCompleted: boolean }>`
   margin: 0.5rem;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 1px;
-  color: #ffffff;
-  text-decoration: none;
+  color: ${props => props.theme.text};
+  text-decoration: ${props => (props.isCompleted ? "line-through" : "none")};
   text-align: center;
 
   a:visited {
-    color: #ffffff;
+    color: ${props => props.theme.text};
   }
 `;

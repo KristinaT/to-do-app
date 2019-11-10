@@ -92,7 +92,7 @@ class AddOrEditTodo extends React.Component<Props, NewTodo> {
       <WrapperDiv>
         <RowDiv>
           <TodoBack to="/">Back</TodoBack>
-          <TodoHeader>Todo entry</TodoHeader>
+          <TodoHeader>{editMode ? "Edit todo" : "Todo entry"}</TodoHeader>
           <TodoForm
             nameInputProps={{
               value: this.state.name,

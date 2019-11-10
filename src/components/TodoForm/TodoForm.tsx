@@ -5,7 +5,7 @@ import {
   TodoTextarea,
   ElementWrapper
 } from "../AddOrEditTodo/AddOrEditTodoStyles";
-import { TodoSubmitButton } from "./TodoFormStyles";
+import { TodoSubmitButton, ButtonWrapper } from "./TodoFormStyles";
 
 export interface InputProps {
   value?: string;
@@ -45,13 +45,11 @@ const TodoForm: React.FC<Props> = ({
           name="description"
         />
       </ElementWrapper>
-      <ElementWrapper>
-        <TodoSubmitButton
-          onClick={onSubmit}
-          type="button">
+      <ButtonWrapper>
+        <TodoSubmitButton onClick={onSubmit} type="button">
           {buttonLabel}
-          </TodoSubmitButton>
-      </ElementWrapper>
+        </TodoSubmitButton>
+      </ButtonWrapper>
     </React.Fragment>
   );
 };

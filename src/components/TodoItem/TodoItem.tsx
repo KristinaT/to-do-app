@@ -1,18 +1,16 @@
 import React from "react";
+import { withTheme, StyledProps } from "styled-components";
 import { Todo } from "../../types";
 import { deleteTodo, completeTodo } from "../../redux/actions/todoActions";
 import { MapDispatchToProps, connect } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  TodoActionButton,
-  TodoItemWrapper,
-  TodoLink
-} from "./TodoItemStyles";
+import { TodoActionButton, TodoItemWrapper, TodoLink } from "./TodoItemStyles";
 import MaterialIcon from "material-icons-react";
 
-interface OwnProps {
+interface OwnProps extends StyledProps<{}> {
   todo: Todo;
 }
+
 interface StateProps {}
 interface DispatchProps {
   deleteTodo: (todoId: string) => void;
@@ -21,7 +19,7 @@ interface DispatchProps {
 
 type Props = OwnProps & StateProps & DispatchProps;
 
-const TodoItem: React.FC<Props> = ({ todo, completeTodo, deleteTodo }) => {
+const TodoItem: React.FC<Props> = ({ todo, completeTodo, deleteTodo, theme }) => {
   const route = `/details/${todo.id}`;
   const handleDelete = () => {
     if (todo.id) {
@@ -36,23 +34,21 @@ const TodoItem: React.FC<Props> = ({ todo, completeTodo, deleteTodo }) => {
   return (
     <TodoItemWrapper>
       <div>
-        <TodoLink to={route}>{todo.name}</TodoLink>
+        <TodoLink isCompleted={todo.isCompleted} to={route}>
+          {todo.name}
+        </TodoLink>
       </div>
       <div>
         <TodoActionButton onClick={handleComplete}>
-          {todo.isCompleted ? (
-            <MaterialIcon icon="check_box" color={"#fff"} />
-          ) : (
-            <MaterialIcon icon="check_box_outline_blank" color={"#fff"} />
-          )}
+          <MaterialIcon icon="done" color={theme.text} />
         </TodoActionButton>
         <Link to={`/edit/${todo.id}`}>
           <TodoActionButton>
-            <MaterialIcon icon="edit" color={"#fff"} />
+            <MaterialIcon icon="edit" color={theme.text} />
           </TodoActionButton>
         </Link>
         <TodoActionButton onClick={handleDelete}>
-          <MaterialIcon icon="delete" color={"#fff"} />
+          <MaterialIcon icon="delete" color={theme.text} />
         </TodoActionButton>
       </div>
     </TodoItemWrapper>
@@ -63,7 +59,8 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = {
   deleteTodo,
   completeTodo
 };
+
 export default connect(
   null,
   mapDispatchToProps
-)(TodoItem);
+)(withTheme(TodoItem));

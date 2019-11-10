@@ -9,14 +9,14 @@ export const WrapperDiv = styled.div`
   margin: 4rem auto;
   padding: 2rem 3rem 3rem;
   max-width: 40rem;
-  background: #ff6666;
-  color: #fff;
+  background: ${props => props.theme.primary};
+  color: ${props => props.theme.text};
   box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, 0.1);
 `;
 
 export const RowDiv = styled.div`
   flex-direction: row;
-  background: #ff6666;
+  background: ${props => props.theme.primary};
   width: 30rem;
 `;
 
@@ -53,10 +53,11 @@ export const TodoInput = styled.input`
   outline: none;
   background: none;
   font-size: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid ${props => props.theme.border};
   text-align: center;
-  color: #fff;
+  color: ${props => props.theme.text};
   width: 100%;
+  font-weight: 300;
 `;
 
 export const TodoTextarea = styled.textarea`
@@ -64,15 +65,16 @@ export const TodoTextarea = styled.textarea`
   height: 10rem;
   outline: none;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid ${props => props.theme.border};
   width: 100%;
   font-size: 1rem;
   text-align: center;
-  background: #f7f1f1;
+  background: ${props => props.theme.secondary};
+  font-weight: 300;
 `;
 
 export const TodoBack = styled(Link)`
-  color: #f7f1f1;
+  color: ${props => props.theme.secondary};
   font-size: 0.8rem;
   text-decoration: none;
 `;
