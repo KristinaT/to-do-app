@@ -1,8 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import { Link } from "react-router-dom";
 import {
-  TodoDiv,
-  TodoHeader,
   WrapperDiv,
   RowDiv,
   TodoBack,

@@ -1,9 +1,9 @@
 import React, { ChangeEvent } from "react";
 import { Todo, NewTodo } from "../../types";
 import { addTodo, editTodo } from "../../redux/actions/todoActions";
-import { TodoHeader, TodoDiv, WrapperDiv, RowDiv, TodoBack } from "./AddOrEditTodoStyles";
+import { TodoHeader, WrapperDiv, RowDiv, TodoBack } from "./AddOrEditTodoStyles";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
 import TodoForm from "../TodoForm/TodoForm";
 import { StoreState } from "../../redux/store";
 import { getTodo } from "../../redux/selectors/todosSelectors";
